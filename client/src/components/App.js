@@ -9,9 +9,16 @@ import CandidateConfirmationPage from './candidate-confirmation-page';
 import '../stylesheets/App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+    // this.state={
+
+    // }
+  }
   render() {
     return (
-      <div className="container">
+      <div className="app">
         <Header/>
         <Route exact path="/" component={CandidateLandingPage}/>
         <Route path="/candidate-step1-info" component={CandidateStep1Info}/>
