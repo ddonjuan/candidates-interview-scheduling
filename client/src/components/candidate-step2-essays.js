@@ -1,7 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 export default (props)=>{
     return(
-        <h1>This is where step 2 will go</h1>
+        <div className="container">
+            <h1>This is where step essays go</h1>
+            <Link to="/candidate-step3-review" className="waves-effect waves-light btn-large">Next -></Link>
+        </div>
     )
 }
