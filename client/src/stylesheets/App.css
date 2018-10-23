@@ -4,10 +4,22 @@
   height: 100vh;
 }
 .header{
-  border: 1px solid black;
   width: 100%;
   height: 15%;
 }
 .header h1{
   margin: 0;
 }
+
+/*  Step 3 styling START  */
+/* .essay-title{
+  margin-bottom: 1%;
+} */
+.divider{
+  margin-bottom: 3%;
+}
+.essay-1-input, .essay-2-input{
+  border: 1px solid black;
+  height: 180px;
+}
+/*  Step 3 styling FINISH  */
