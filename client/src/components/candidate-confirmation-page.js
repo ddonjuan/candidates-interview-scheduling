@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import dummyData from './dummy-data';
 import firebase from 'firebase';
 
-class CandidateConfirmation extends Component{
+class CandidateConfirmation extends Component {
     constructor(props) {
         super(props);
-      }
-    componentWillMount(){
-        var firstName =this.props.state.firstName;
+    }
+    componentWillMount() {
+        var firstName = this.props.state.firstName;
         var LastName = this.props.state.lastName;
         var config = {
             apiKey: 'AIzaSyAiaonRqttDyUYuezZshYwftS_nG6YFjPs',
@@ -19,18 +19,20 @@ class CandidateConfirmation extends Component{
         var storage = firebase.storage();
         var ref = storage.ref();
         var file = this.props.state.cv;
-        var refName = firstName+"."+LastName+"."+file.name
-        var uploadTask = ref.child(refName).put(file).then(function(snapshot) {
+        var refName = firstName + "." + LastName + "." + file.name
+        var uploadTask = ref.child(refName).put(file).then(function (snapshot) {
             console.log('Uploaded a blob or file!', snapshot);
-            ref.child(refName).getDownloadURL().then(function(url) {
+            ref.child(refName).getDownloadURL().then(function (url) {
                 var address = url
                 console.log(address);
-              }).catch(function(error) {
+            }).catch(function (error) {
                 console.log(error);
-              });
-          });
+            });
+        });
+        this.props.reset();
     }
-    render(){
+    render() {
+        console.log("this is the state in the app: ", this.props.state);
         return (
             <div className="container">
                 <div className="email-confirm">
@@ -38,7 +40,7 @@ class CandidateConfirmation extends Component{
                     <h4 className="center">Reference number to your application has been emailed to: </h4>
                     <h4 className="center">{dummyData[0].email}</h4>
                 </div>
-    
+
             </div>
         )
     }
