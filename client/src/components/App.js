@@ -41,6 +41,7 @@ class App extends Component {
       [name]: value
     });
     this.charCount(name, value);
+
   }
 
   handleUploadChange(event){
@@ -50,20 +51,25 @@ class App extends Component {
   }
 
   charCount(name, value) {
-    let maxChar = 2000;
+    let maxChar1 = 2000;
+    let maxChar2 = 2000;
     let currentValue = value.length;
-    let remainingChar = null;
+    let remainingChar1 = null;
+    let remainingchar2 = null;
     var essay1Page = document.getElementsByClassName('remaining-input')[0];
+    var essay2Page = document.getElementsByClassName('remaining-input-2')[0];
+
     switch (name) {
       case 'essay1':
-        if (currentValue < maxChar) {
-          remainingChar = maxChar - currentValue
-          essay1Page.innerHTML = remainingChar;
+        if (currentValue < maxChar1) {
+          remainingChar1 = maxChar1 - currentValue;
+          essay1Page.innerHTML = remainingChar1;
         }
         break;
       case 'essay2':
-        if (value.length < maxChar) {
-          essay1Page.innerHTML = value.length;
+        if (currentValue < maxChar2) {
+          remainingchar2 = maxChar2 - currentValue;
+          essay2Page.innerHTML = remainingchar2;
         }
         break;
       default:
@@ -84,13 +90,10 @@ class App extends Component {
       cv: null,
       essay1: '',
       essay2: '',
-      textAreaChar: null
-
+      textAreaChar: null,
     })
   }
-  characterTrim(essay) {
 
-  }
   render() {
     console.log("this is the state: ", this.state.textAreaChar);
     const { firstName, lastName,phone, email, school, yearOfGraduation, cv, essay1, essay2 } = this.state;
