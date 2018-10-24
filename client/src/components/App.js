@@ -13,6 +13,12 @@ class App extends Component {
     super(props);
 
     this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      school: '',
+      yearOfGraduation: '',
+      cv: '',
       essay1: '',
       essay2: '',
       textAreaChar: null
@@ -57,7 +63,7 @@ class App extends Component {
   }
   render() {
     console.log("this is the state: ", this.state.textAreaChar);
-    const { essay1, essay2 } = this.state;
+    const { firstName, lastName, email, school, yearOfGraduation, cv, essay1, essay2 } = this.state;
     console.log("this is the state in app: ", this.state);
     return (
       <div className="app">
@@ -65,7 +71,7 @@ class App extends Component {
         <Route exact path="/" component={CandidateLandingPage} />
         <Route path="/candidate-step1-info" render={(props) => <CandidateStep1Info {...props} inputChange={this.handleInputChange} />} />
         <Route path="/candidate-step2-essays" render={(props) => <CandidateStep2Essays {...props} essay1={essay1} essay2={essay2} inputChange={this.handleInputChange} />} />
-        <Route path="/candidate-step3-review" render={(props) => <CandidateStep3Review {...props} />} />
+        <Route path="/candidate-step3-review" render={(props) => <CandidateStep3Review {...props} firstName={firstName} lastName={lastName} email={email} school={school} yearOfGraduation={yearOfGraduation} cv={cv} inputChange={this.handleInputChange}/>} />
         <Route path="/candidate-confirmation-page" render={(props) => <CandidateConfirmationPage {...props} />} />
       </div>
     );
