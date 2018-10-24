@@ -20,13 +20,20 @@ class App extends Component {
       school: '',
       yearOfGraduation: '',
       cv: null,
+      cvName: '',
       essay1: '',
       essay2: '',
       textAreaChar: null
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleUploadChange = this.handleUploadChange.bind(this);
+    this.resetState = this.resetState.bind(this);
   }
+
+  componentDidMount(){
+
+  }
+  disableBackButton
 
   handleInputChange(event) {
     const { value, name } = event.target;
@@ -38,7 +45,7 @@ class App extends Component {
 
   handleUploadChange(event){
     this.setState({
-      'cv': event.target.files[0]
+      'cv': event.target.files[0],
     })
   }
 
@@ -53,7 +60,6 @@ class App extends Component {
           remainingChar = maxChar - currentValue
           essay1Page.innerHTML = remainingChar;
         }
-
         break;
       case 'essay2':
         if (value.length < maxChar) {
@@ -67,6 +73,21 @@ class App extends Component {
     return;
 
   }
+  resetState(){
+    this.setState({
+      firstName: '',
+      lastName: '',
+      phone: '',
+      email: '',
+      school: '',
+      yearOfGraduation: '',
+      cv: null,
+      essay1: '',
+      essay2: '',
+      textAreaChar: null
+
+    })
+  }
   characterTrim(essay) {
 
   }
@@ -78,10 +99,10 @@ class App extends Component {
       <div className="app">
         <Header />
         <Route exact path="/" component={CandidateLandingPage} />
-        <Route path="/candidate-step1-info" render={(props) => <CandidateStep1Info {...props} inputChange={this.handleInputChange} uploadChange={this.handleUploadChange} />} />
+        <Route path="/candidate-step1-info" render={(props) => <CandidateStep1Info {...props} firstName={firstName} lastName={lastName} phone={phone} email={email} school={school} yearOfGraduation={yearOfGraduation} cv={cv} essay1={essay1} essay2={essay2} inputChange={this.handleInputChange} uploadChange={this.handleUploadChange} />} />
         <Route path="/candidate-step2-essays" render={(props) => <CandidateStep2Essays {...props} essay1={essay1} essay2={essay2} inputChange={this.handleInputChange} />} />
         <Route path="/candidate-step3-review" render={(props) => <CandidateStep3Review {...props} firstName={firstName} lastName={lastName} phone={phone} email={email} school={school} yearOfGraduation={yearOfGraduation} cv={cv} essay1={essay1} essay2={essay2} inputChange={this.handleInputChange} />} />
-        <Route path="/candidate-confirmation-page" render={(props) => <CandidateConfirmationPage {...props} state={this.state}/>} />
+        <Route path="/candidate-confirmation-page" render={(props) => <CandidateConfirmationPage {...props} state={this.state} reset={this.resetState}/>} />
       </div>
     );
   }

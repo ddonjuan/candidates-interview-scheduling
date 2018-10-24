@@ -6,6 +6,7 @@ import dummyData from './dummy-data';
 class CandidateConfirmation extends Component {
     constructor(props) {
         super(props);
+
     }
 
     // async insertStudent(url) {
