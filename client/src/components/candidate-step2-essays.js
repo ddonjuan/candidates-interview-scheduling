@@ -27,7 +27,8 @@ class CandidateStep2Essays extends Component {
                         <textarea placeholder="Enter response here...(limited to 2000 characters)" maxLength="2000" onChange={inputChange} name="essay2" className="col s6 essay-2-input"></textarea>
                     </div>
                 </div>
-                <Link to="/candidate-step3-review" className="waves-effect waves-light btn-large">Next -></Link>
+                <Link to="/candidate-step1-info" className="waves-effect waves-light btn-large back-button">Back</Link>
+                <Link to="/candidate-step3-review" className="waves-effect waves-light btn-large">Next</Link>
             </div>
         )
     }
