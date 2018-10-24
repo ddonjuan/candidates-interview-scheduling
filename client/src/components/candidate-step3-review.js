@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default (props) => {
+export default () => {
     return (
         <div className="container">
         <h1>This is where candidate will review info</h1>

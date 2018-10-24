@@ -18,12 +18,13 @@ class App extends Component {
       email: '',
       school: '',
       yearOfGraduation: '',
-      cv: '',
+      cv: null,
       essay1: '',
       essay2: '',
       textAreaChar: null
     }
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleUploadChange = this.handleUploadChange.bind(this);
   }
 
   handleInputChange(event) {
@@ -33,6 +34,13 @@ class App extends Component {
     });
     this.charCount(name, value);
   }
+
+  handleUploadChange(event){
+    this.setState({
+      'cv': event.target.files[0]
+    })
+  }
+
   charCount(name, value) {
     let maxChar = 2000;
     let currentValue = value.length;
@@ -69,10 +77,10 @@ class App extends Component {
       <div className="app">
         <Header />
         <Route exact path="/" component={CandidateLandingPage} />
-        <Route path="/candidate-step1-info" render={(props) => <CandidateStep1Info {...props} inputChange={this.handleInputChange} />} />
+        <Route path="/candidate-step1-info" render={(props) => <CandidateStep1Info {...props} inputChange={this.handleInputChange} uploadChange={this.handleUploadChange} />} />
         <Route path="/candidate-step2-essays" render={(props) => <CandidateStep2Essays {...props} essay1={essay1} essay2={essay2} inputChange={this.handleInputChange} />} />
-        <Route path="/candidate-step3-review" render={(props) => <CandidateStep3Review {...props} firstName={firstName} lastName={lastName} email={email} school={school} yearOfGraduation={yearOfGraduation} cv={cv} inputChange={this.handleInputChange}/>} />
-        <Route path="/candidate-confirmation-page" render={(props) => <CandidateConfirmationPage {...props} />} />
+        <Route path="/candidate-step3-review" render={(props) => <CandidateStep3Review {...props} firstName={firstName} lastName={lastName} email={email} school={school} yearOfGraduation={yearOfGraduation} cv={cv} inputChange={this.handleInputChange} />} />
+        <Route path="/candidate-confirmation-page" render={(props) => <CandidateConfirmationPage {...props} state={this.state}/>} />
       </div>
     );
   }
