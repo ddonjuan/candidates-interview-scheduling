@@ -59,7 +59,7 @@ class CandidateConfirmationPage extends Component{
     }
 
     render(){
-        const {firstName, lastName, phone, email, school, yearOfGraduation, cv, essay1, essay2} = this.props;
+        const {firstName, lastName, phone, email, c_email, school, yearOfGraduation, cv, essay1, essay2} = this.props;
         return (
             <div className="container">
                 <h1 className="center">Please review information listed</h1>
