@@ -37,7 +37,7 @@ class CandidateConfirmationPage extends Component{
                 </div>
                 <div className="row">
                     <div className="col s6">
-                        <div className="cv-file-review">CV File: {cv}</div>
+                        <div className="cv-file-review">CV File: {cv.name}</div>
                     </div>
                 </div>
                 <div className="row">
