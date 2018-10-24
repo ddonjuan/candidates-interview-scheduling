@@ -25,6 +25,7 @@ class CandidateStep2Essays extends Component {
                     <div className="col s12">
                         <div className="col s6 essay-2">In which Allergan Fellowship are you interested most in, and why?</div>
                         <textarea placeholder="Enter response here...(limited to 2000 characters)" maxLength="2000" onChange={inputChange} name="essay2" className="col s6 essay-2-input"></textarea>
+                        <div className="right remaining-2">remaining characters: <span className="remaining-input-2">2000</span></div>
                     </div>
                 </div>
                 <Link to="/candidate-step1-info" className="waves-effect waves-light btn-large back-button">Back</Link>
