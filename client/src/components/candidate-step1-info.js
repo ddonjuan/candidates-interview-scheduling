@@ -10,7 +10,7 @@ class CandidateStep1Info extends Component {
         console.log("These are the props: ", this.props);
 
         const { inputChange, uploadChange } = this.props;
-        const { firstName, lastName, phone, email, confirmEmail, school, yearOfGraduation, cv } = this.props;
+        const { firstName, lastName, phone, email, c_email, school, interestedFunctions, yearOfGraduation, cv } = this.props;
         return (
             <div className="container step-1-page">
                 <h1 className="center">Please fill out form carefully.</h1>
@@ -31,7 +31,7 @@ class CandidateStep1Info extends Component {
                             <input placeholder="Email" onChange={inputChange} name="email" value={email} id="email" type="email" className="validate" />
                         </div>
                         <div className="input-field col s12">
-                            <input placeholder="Confirm Email" onChange={inputChange} value={confirmEmail} id="confirmEmail" type="email" className="validate" />
+                            <input placeholder="Confirm Email" onChange={inputChange } id="c_email" type="email" className="validate" />
                         </div>
                     </div>
                     <div className="row">
@@ -44,14 +44,28 @@ class CandidateStep1Info extends Component {
                         </div>
                     </div>
                     <div className="row">
+                        <div className="input-field col s12">
+                            <select onChange={inputChange} name="interestedFunction" value={interestedFunctions} className="browser-default">
+                                <option value="" disabled selected>Interested Functions</option>
+                                <option value="Clinical Development" name="Clinical Development">Clinical Development</option>
+                                <option value="Medical Affairs">Medical Affairs (Publication, Global Phase IV, Med Info.)</option>
+                                <option value="Global Regulatory Affairs">Global Regulatory Affairs – CMC</option>
+                                <option value="Clinical Pharmacology"> Clinical Pharmacology</option>
+                            </select>
+                        </div>
+                        <label>Note: Candidates will select their individual function prior to second round</label>
+                    </div>
+                    <br/>
+                    <div className="row">
                         <div className="file-field input-field">
-                        <label for="btn" className="active">Upload CV/Resume</label>
+                            <label for="btn" className="active">Upload CV/Resume</label>
+                            <br/>
                             <div className="btn" name="btn">
                                 <span>File</span>
-                                <input type="file" onChange={uploadChange}  />
+                                <input type="file" onChange={uploadChange} />
                             </div>
                             <div className="file-path-wrapper">
-                                <input type="text" className="file-path validate" value={cv ? cv.name : ''  } onChange={this.handleChange} />
+                                <input type="text" className="file-path validate" value={cv ? cv.name : ''} onChange={this.handleChange} />
                             </div>
                         </div>
                     </div>

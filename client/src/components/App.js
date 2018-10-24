@@ -19,6 +19,7 @@ class App extends Component {
       email: '',
       school: '',
       yearOfGraduation: '',
+      interestedFunction: '',
       cv: null,
       cvName: '',
       essay1: '',
@@ -43,12 +44,12 @@ class App extends Component {
     this.charCount(name, value);
   }
 
+
   handleUploadChange(event){
     this.setState({
       'cv': event.target.files[0],
     })
   }
-
   charCount(name, value) {
     let maxChar = 2000;
     let currentValue = value.length;
@@ -81,6 +82,7 @@ class App extends Component {
       email: '',
       school: '',
       yearOfGraduation: '',
+      interestedFunction: '',
       cv: null,
       essay1: '',
       essay2: '',
