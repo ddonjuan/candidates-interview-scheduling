@@ -30,7 +30,7 @@ export default (props) => {
                     </div>
                     <label htmlFor="year-of-gradutation">Expected year of graduation</label>
                     <div className="input-field col s12">
-                        <input placeholder="Expected year of graduation" id="year-of-graduation" type="date" className="validate" />
+                        <input placeholder="Expected year of graduation" id="year-of-graduation" type="month" className="validate" />
                     </div>
                 </div>
                 <div className="row">
