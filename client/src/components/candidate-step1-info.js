@@ -9,10 +9,10 @@ class CandidateStep1Info extends Component {
     render() {
         console.log("These are the props: ", this.props);
 
-        const { inputChange , uploadChange} = this.props;
+        const { inputChange, uploadChange } = this.props;
         return (
-            <div className="container">
-                <h1>Please fill out form carefully.</h1>
+            <div className="container step-1-page">
+                <h1 className="center">Please fill out form carefully.</h1>
                 <form className="col s12" action="">
                     <div className="row">
                         <div className="input-field col s6">
@@ -25,7 +25,10 @@ class CandidateStep1Info extends Component {
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
-                            <input placeholder="Email"  onChange={inputChange} name="email" id="email" type="email" className="validate" />
+                            <input placeholder="Phone Number" onChange={inputChange} name="phone" id="phone" type="text" className="validate" />
+                        </div>
+                        <div className="input-field col s12">
+                            <input placeholder="Email" onChange={inputChange} name="email" id="email" type="email" className="validate" />
                         </div>
                         <div className="input-field col s12">
                             <input placeholder="Confirm Email" onChange={inputChange} id="confirm-email" type="email" className="validate" />
@@ -35,19 +38,19 @@ class CandidateStep1Info extends Component {
                         <div className="input-field col s12">
                             <input placeholder="School of Pharmacy" onChange={inputChange} name="school" id="school" type="text" className="validate" />
                         </div>
-                        <label htmlFor="year-of-gradutation">Expected year of graduation</label>
                         <div className="input-field col s12">
                             <input placeholder="Expected year of graduation" onChange={inputChange} name="yearOfGraduation" id="yearOfGraduation" type="month" className="validate" />
+                            <label for="yearOfGradutation" className="active">Expected year of graduation</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="file-field input-field">
                             <div className="btn">
                                 <span>File</span>
-                                <input type="file" onChange={uploadChange}/>
+                                <input type="file" onChange={uploadChange} />
                             </div>
                             <div className="file-path-wrapper">
-                                <input className="file-path validate" type="text"/>
+                                <input className="file-path validate" type="text" />
                             </div>
                         </div>
                     </div>
