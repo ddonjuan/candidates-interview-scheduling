@@ -9,7 +9,7 @@ class CandidateStep1Info extends Component {
     render() {
         console.log("These are the props: ", this.props);
 
-        const { inputChange } = this.props;
+        const { inputChange , uploadChange} = this.props;
         return (
             <div className="container">
                 <h1>Please fill out form carefully.</h1>
@@ -44,10 +44,10 @@ class CandidateStep1Info extends Component {
                         <div className="file-field input-field">
                             <div className="btn">
                                 <span>File</span>
-                                <input type="file" name="cv"/>
+                                <input type="file" onChange={uploadChange}/>
                             </div>
                             <div className="file-path-wrapper">
-                                <input className="file-path validate" onChange={inputChange} name="cv" type="text" />
+                                <input className="file-path validate" type="text"/>
                             </div>
                         </div>
                     </div>
