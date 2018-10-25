@@ -1,11 +1,64 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import firebase from 'firebase';
+import axios from 'axios';
 
 
 class CandidateConfirmationPage extends Component{
     constructor(props){
         super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+    async insertStudent(url) {
+        var userInfo = [{
+            'firstName': this.props.firstName,
+            'lastName': this.props.lastName,
+            'phone': this.props.phone,
+            'email': this.props.email,
+            'school': this.props.school,
+            'year': this.props.yearOfGraduation,
+            'cv': url,
+            'essay1': this.props.essay1,
+            'essay2': this.props.essay2
+        }];
+        console.log(userInfo);
+        try{
+            await axios.post('http://localhost:8888/submit-information.php', { ...userInfo }).then(response => {
+            console.log("Response",response);
+            this.props.history.push({
+                pathname: '/candidate-confirmation-page'
+              });
+        });
+        } catch(err){
+            console.log("error", err);
+        }
+    }
+    handleSubmit(){
+        var firstName = this.props.firstName;
+        var LastName = this.props.lastName;
+        var config = {
+            apiKey: 'AIzaSyAiaonRqttDyUYuezZshYwftS_nG6YFjPs',
+            authDomain: 'interview-app-5def8.firebaseapp.com',
+            databaseURL: 'https://interview-app-5def8.firebaseio.com/',
+            storageBucket: 'gs://interview-app-5def8.appspot.com'
+        };
+        firebase.initializeApp(config);
+        var storage = firebase.storage();
+        var ref = storage.ref();
+        var file = this.props.cv;
+        var refName = firstName + "." + LastName + "." + file.name
+        var uploadTask = ref.child(refName).put(file).then(function (snapshot) {
+            console.log('Uploaded a blob or file!', snapshot);
+            ref.child(refName).getDownloadURL().then(function (url) {
+                var address = url
+                this.insertStudent(address);
+                console.log(address);
+            }.bind(this)).catch(function (error) {
+                console.log(error);
+            });
+        }.bind(this));
+    }
+
     render(){
         const {firstName, lastName, phone, email, c_email, school, yearOfGraduation, cv, essay1, essay2} = this.props;
         return (
@@ -53,7 +106,7 @@ class CandidateConfirmationPage extends Component{
                 </div>
                 <div className="buttons center">
                     <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large back-button">Back</Link>
-                    <Link to="/candidate-confirmation-page" className="waves-effect waves-light btn-large">Submit</Link>
+                    <button onClick={this.handleSubmit} className="waves-effect waves-light btn-large">Submit</button>
                 </div>
             </div>
         )
