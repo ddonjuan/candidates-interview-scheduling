@@ -21,10 +21,10 @@ $year = $request[0]['year'];
 $cv = $request[0]['cv'];
 $essay1 = $request[0]['essay1'];
 $essay2 = $request[0]['essay2'];
-$interest = "test";
+$interest = $request[0]['interest'];
 $status = "pending";
 
-$output['success'] = $request['userInfo'];
+$output['success'] = false;
 
 
 if($stmt->execute()){
