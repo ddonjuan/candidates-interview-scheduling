@@ -13,7 +13,8 @@ class CandidateStep1Info extends Component {
         const { firstName, lastName, phone, email, c_email, school, interestedFunctions, yearOfGraduation, cv } = this.props;
         return (
             <div className="container step-1-page">
-                <h2 className="center">Please fill out form.</h2>
+                <h3 className="center">Please fill out form.</h3>
+                <div className="divider"></div>
                 <form className="col s12" action="">
                     <div className="row">
                         <div className="input-field col s6">

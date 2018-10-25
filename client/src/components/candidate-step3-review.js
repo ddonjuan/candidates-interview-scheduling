@@ -60,10 +60,11 @@ class CandidateConfirmationPage extends Component{
     }
 
     render(){
-        const {firstName, lastName, phone, email, c_email, school, yearOfGraduation, cv, essay1, essay2} = this.props;
+        const {firstName, lastName, phone, email, c_email, school, yearOfGraduation, interestedFunction, cv, essay1, essay2} = this.props;
         return (
             <div className="container">
-                <h1 className="center">Please review information listed</h1>
+                <h3 className="center">Please Confirm the Information</h3>
+                <div className="divider"></div>
                 <div className="row">
                     <div className="col s6">
                         <div className="first-name-review">First Name: {firstName}</div>
@@ -90,6 +91,9 @@ class CandidateConfirmationPage extends Component{
                 </div>
                 <div className="row">
                     <div className="col s6">
+                        <div className="interest-function-review">Interested Function: {interestedFunction}</div>
+                    </div>
+                    <div className="col s6">
                         <div className="cv-file-review">CV File: {cv.name}</div>
                     </div>
                 </div>
@@ -107,6 +111,10 @@ class CandidateConfirmationPage extends Component{
                 <div className="buttons center">
                     <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large back-button">Back</Link>
                     <button onClick={this.handleSubmit} className="waves-effect waves-light btn-large">Submit</button>
+                </div>
+                <div className="row">
+                    <blockquote>*Please note, you will not be able to change your information once submitted,
+please be sure to double check that all information submitted is correct.</blockquote>
                 </div>
             </div>
         )
