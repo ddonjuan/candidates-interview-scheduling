@@ -13,7 +13,7 @@ class CandidateStep1Info extends Component {
         const { firstName, lastName, phone, email, c_email, school, interestedFunctions, yearOfGraduation, cv } = this.props;
         return (
             <div className="container step-1-page">
-                <h1 className="center">Please fill out form carefully.</h1>
+                <h2 className="center">Please fill out form.</h2>
                 <form className="col s12" action="">
                     <div className="row">
                         <div className="input-field col s6">
@@ -47,14 +47,17 @@ class CandidateStep1Info extends Component {
                         <div className="input-field col s12">
                             <select onChange={inputChange} name="interestedFunction" value={interestedFunctions} className="browser-default">
                                 <option value="" disabled selected>Interested Functions</option>
-                                <option value="Clinical Development" name="Clinical Development">Clinical Development</option>
-                                <option value="Medical Affairs">Medical Affairs (Publication, Global Phase IV, Med Info.)</option>
+                                <option value="Clinical Development">Clinical Development</option>
+                                <option value="Medical Affairs">Medical Affairs (External Scientific Comm., Global Phase IV, Global Medical Comm.)</option>
                                 <option value="Global Regulatory Affairs">Global Regulatory Affairs – CMC</option>
                                 <option value="Clinical Pharmacology"> Clinical Pharmacology</option>
                             </select>
                         </div>
-                        <label>Note: Candidates will select their individual function prior to second round</label>
                     </div>
+                    <blockquote>
+                            *Notes: Medical Affairs Candidates will select individual function upon
+completion of the 1st round of interview.
+                        </blockquote>
                     <br/>
                     <div className="row">
                         <div className="file-field input-field">
@@ -62,10 +65,10 @@ class CandidateStep1Info extends Component {
                             <br/>
                             <div className="btn" name="btn">
                                 <span>File</span>
-                                <input type="file" onChange={uploadChange} />
+                                <input type="file" onChange={uploadChange}/>
                             </div>
                             <div className="file-path-wrapper">
-                                <input type="text" className="file-path validate" value={cv ? cv.name : ''} onChange={this.handleChange} />
+                                <input type="text" className="file-path validate" value={cv ? cv.name : ''} onChange={this.handleChange} placeholder="Select a file from your computer"/>
                             </div>
                         </div>
                     </div>
