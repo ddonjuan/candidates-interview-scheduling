@@ -7,13 +7,7 @@ export default (props) => {
             <h3>Dear Candidates:</h3>
             <blockquote>
                 <div className="row">
-                Thank you for your interest in the USC-Allergan Industry Pharmaceutical
-    Fellowship. Using this system, you can submit your pre-screening application
-    materials for ASHP Midyear PPS interview (Anaheim, CA). Please remember
-    to put down an active email on this application, we would suggest using your
-    school email. Once we review your application material, we will sent out an
-    invite to schedule 1st round interviews via a link to your email. We look
-    forward for your application.
+                Thank you for your interest in the USC-Allergan Industry Pharmaceutical Fellowship. Due to the high volume of candidates and limited interview slots, interviews at the ASHP Midyear Meeting are granted on a competitive basis. Using this system, you can submit your pre-screening application materials. Please remember to include an active email on this application, we suggest using your school email. Selected candidates will be invited to schedule an interview at the 2018 ASHP Midyear PPS by email prior to December 1, 2018. Please be sure to bring a copy of your updated curriculum vitae.
                 </div>
                 <div className="row">
                     <div className="right-align"><span>USC-Allergan Industry Pharmaceutical Fellowship</span></div>
