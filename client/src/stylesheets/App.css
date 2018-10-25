@@ -52,3 +52,70 @@
 .back-button{
   margin-right: 5%;
 }
+
+/* NAV */
+.tag-wrapper{
+  text-align: center;
+}
+nav.dot {
+  background: none;
+  box-shadow: none;
+}
+.nav-text {
+  font-size: 18px;
+  position: relative;
+  color: #6f6f6f;
+  display: inline-block;
+  padding: 0 2.5rem;
+}
+
+.nav-button:before, .nav-button:first-child:before {
+  content: "";
+  position: absolute;
+  background: #fcc3c5;
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 0 0 0 -5px;
+  border-radius: 50%;
+  bottom: 0;
+  left: 50%;
+  z-index: 1;
+  transition: width ease-in 0.1s, height ease-in 0.1s, margin ease-in 0.1s, bottom ease-in 0.1s;
+}
+.nav-line:after {
+  content: "";
+  position: absolute;
+  background: #fcc3c5;
+  display: block;
+  width: calc(100% + 20px);
+  height: 2px;
+  bottom: 4px;
+  left: 50%;
+}
+
+/* .nav-line-highlight:after {
+  content: "";
+  position: absolute;
+  background: #f7585e;
+  display: block;
+  width: calc(100% - 5px);
+  height: 2px;
+  bottom: 4px;
+  left: 50%;
+} */
+/* nav.dot a:nth-last-child(2):after {
+  width: calc(100% + 25px);
+  background: #fcc3c5;
+} */
+.nav-text-highlight {
+  color: black;
+}
+
+.nav-button-highlight:before, .nav-button-highlight:first-child:before{
+  background: #f7585e;
+}
+nav.dot a:last-child:after {
+  display: none;
+}
+/* NAV */

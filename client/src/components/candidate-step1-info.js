@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Nav from './candidate-navigation';
 
 
 class CandidateStep1Info extends Component {
@@ -13,6 +14,7 @@ class CandidateStep1Info extends Component {
         const { firstName, lastName, phone, email, c_email, school, interestedFunctions, yearOfGraduation, cv } = this.props;
         return (
             <div className="container step-1-page">
+                <Nav location={this.props.location.pathname}/>
                 <h3 className="center">Please fill out form.</h3>
                 <div className="divider"></div>
                 <form className="col s12" action="">
