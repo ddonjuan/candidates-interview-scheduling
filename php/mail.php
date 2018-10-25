@@ -21,12 +21,12 @@ $options = array(
     )
 );
 $mail->smtpConnect($options);
-$mail->From = '';  // sender's email address (shows in "From" field)
+$mail->From = 'lipenben@usc.edu';  // sender's email address (shows in "From" field)
 $mail->FromName = 'Allergan USC Fellowship';   // sender's name (shows in "From" field)
-$mail->addAddress('');  // Add a recipient - MY ACTUAL EMAIL
+$mail->addAddress('harrison8024@gmail.com');  // Add a recipient - MY ACTUAL EMAIL
 //$mail->addAddress('ellen@example.com');                        // Name is optional
 // $mail->addReplyTo($_POST['email']);                          // Add a reply-to address - PERSON OF INTEREST'S EMAIL
-$mail->addReplyTo('');  
+$mail->addReplyTo('lipenben@usc.edu');  
 //$mail->addCC('cc@example.com');
 //$mail->addBCC('bcc@example.com');
 
