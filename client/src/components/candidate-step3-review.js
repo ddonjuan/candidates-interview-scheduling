@@ -10,19 +10,20 @@ class CandidateConfirmationPage extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     async insertStudent(url) {
-        var userInfo = {
-            firstName: this.props.firstName,
-            lastName: this.props.lastName,
-            phone: this.props.phone,
-            email: this.props.email,
-            school: this.props.school,
-            year: this.props.yearOfGraduation,
-            cv: url,
-            essay1: this.props.essay1,
-            essay2: this.props.essay2
-        }
+        var userInfo = [{
+            'firstName': this.props.firstName,
+            'lastName': this.props.lastName,
+            'phone': this.props.phone,
+            'email': this.props.email,
+            'school': this.props.school,
+            'year': this.props.yearOfGraduation,
+            'cv': url,
+            'essay1': this.props.essay1,
+            'essay2': this.props.essay2
+        }];
+        console.log(userInfo);
         try{
-            await axios.post('http://localhost:8888/submit-information.php', { userInfo }).then(response => {
+            await axios.post('http://localhost:8888/submit-information.php', { ...userInfo }).then(response => {
             console.log("Response",response);
             this.props.history.push({
                 pathname: '/candidate-confirmation-page'
