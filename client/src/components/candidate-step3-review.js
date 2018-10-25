@@ -17,6 +17,7 @@ class CandidateConfirmationPage extends Component{
             'email': this.props.email,
             'school': this.props.school,
             'year': this.props.yearOfGraduation,
+            'interest': this.props.interestedFunction,
             'cv': url,
             'essay1': this.props.essay1,
             'essay2': this.props.essay2
