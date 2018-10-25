@@ -30,8 +30,16 @@ class CandidateStep2Essays extends Component {
                         <div className="right remaining-2">remaining characters: <span className="remaining-input-2">2000</span></div>
                     </div>
                 </div>
-                <Link to="/candidate-step1-info" className="waves-effect waves-light btn-large back-button">Back</Link>
-                <Link to="/candidate-step3-review" className="waves-effect waves-light btn-large">Next</Link>
+                <div className="row">
+                    <div className="col s3"></div>
+                    <div className="col s4">
+                        <Link to="/candidate-step1-info" className="waves-effect waves-light btn-large back-button">Back</Link>
+                    </div>
+                    <div className="col s4">
+                        <Link to="/candidate-step3-review" className="waves-effect waves-light btn-large">Next</Link>
+                    </div>
+                    <div className="col s1"></div>
+                </div>
             </div>
         )
     }

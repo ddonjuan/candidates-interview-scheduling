@@ -97,7 +97,7 @@ class CandidateConfirmationPage extends Component{
                         <div className="interest-function-review">Interested Function: {interestedFunction}</div>
                     </div>
                     <div className="col s6">
-                        <div className="cv-file-review">CV File: {cv.name}</div>
+                        <div className="cv-file-review">CV File: {cv? cv.name: ""}</div>
                     </div>
                 </div>
                 <div className="row">
@@ -111,9 +111,15 @@ class CandidateConfirmationPage extends Component{
     
                     </div>
                 </div>
-                <div className="buttons center">
-                    <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large back-button">Back</Link>
-                    <button onClick={this.handleSubmit} className="waves-effect waves-light btn-large">Submit</button>
+                <div className="row buttons center">
+                    <div className="col s2"></div>
+                    <div className="col s4">
+                        <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large back-button">Back</Link>
+                    </div>
+                    <div className="col s4">
+                        <button onClick={this.handleSubmit} className="waves-effect waves-light btn-large">Submit</button>
+                    </div>
+                    <div className="col s2"></div>
                 </div>
                 <div className="row">
                     <blockquote>*Please note, you will not be able to change your information once submitted,
