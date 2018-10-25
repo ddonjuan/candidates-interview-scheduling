@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 import axios from 'axios';
+import Nav from './candidate-navigation';
 
 
 class CandidateConfirmationPage extends Component{
@@ -64,6 +65,7 @@ class CandidateConfirmationPage extends Component{
         const {firstName, lastName, phone, email, c_email, school, yearOfGraduation, interestedFunction, cv, essay1, essay2} = this.props;
         return (
             <div className="container">
+                <Nav location={this.props.location.pathname}/>
                 <h3 className="center">Please Confirm the Information</h3>
                 <div className="divider"></div>
                 <div className="row">

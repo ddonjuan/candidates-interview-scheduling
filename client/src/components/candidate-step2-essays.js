@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Nav from './candidate-navigation';
 
 
 class CandidateStep2Essays extends Component {
@@ -12,6 +13,7 @@ class CandidateStep2Essays extends Component {
         const { inputChange} = this.props;
         return (
             <div className="container">
+                <Nav location={this.props.location.pathname}/>
                 <h3 className="center essay-title">Response</h3>
                 <div className="divider"></div>
                 <div className="row">

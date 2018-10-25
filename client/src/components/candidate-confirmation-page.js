@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import dummyData from './dummy-data';
+import Nav from './candidate-navigation';
 
 class CandidateConfirmation extends Component {
     constructor(props) {
@@ -10,6 +10,7 @@ class CandidateConfirmation extends Component {
     render() {
         return (
             <div className="container">
+            <Nav location={this.props.location.pathname}/>
                 <div className="email-confirm">
                     <h3 className="center">Your application has been submitted</h3>
                     <h4 className="center">Reference number to your application has been emailed</h4>
