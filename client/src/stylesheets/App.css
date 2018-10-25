@@ -12,6 +12,14 @@
   color: white;
 }
 
+.logo{
+  max-height: 70%;
+  width: auto;
+}
+
+#logo-wrapper{
+  margin-bottom: 0%;
+}
 /*  Step 3 styling START  */
 /* .essay-title{
   margin-bottom: 1%;
