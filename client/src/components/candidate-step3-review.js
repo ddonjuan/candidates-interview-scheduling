@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 import axios from 'axios';
 import Nav from './candidate-navigation';
 
 
-class CandidateConfirmationPage extends Component{
-    constructor(props){
+class CandidateConfirmationPage extends Component {
+    constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -24,18 +24,18 @@ class CandidateConfirmationPage extends Component{
             'essay2': this.props.essay2
         }];
         console.log(userInfo);
-        try{
+        try {
             await axios.post('http://localhost:8888/submit-information.php', { ...userInfo }).then(response => {
-            console.log("Response",response);
-            this.props.history.push({
-                pathname: '/candidate-confirmation-page'
-              });
-        });
-        } catch(err){
+                console.log("Response", response);
+                this.props.history.push({
+                    pathname: '/candidate-confirmation-page'
+                });
+            });
+        } catch (err) {
             console.log("error", err);
         }
     }
-    handleSubmit(){
+    handleSubmit() {
         var firstName = this.props.firstName;
         var LastName = this.props.lastName;
         var config = {
@@ -61,54 +61,97 @@ class CandidateConfirmationPage extends Component{
         }.bind(this));
     }
 
-    render(){
-        const {firstName, lastName, phone, email, c_email, school, yearOfGraduation, interestedFunction, cv, essay1, essay2} = this.props;
+    render() {
+        const { firstName, lastName, phone, email, c_email, school, yearOfGraduation, interestedFunction, cv, essay1, essay2 } = this.props;
         return (
             <div className="container">
-                <Nav location={this.props.location.pathname}/>
+                <Nav location={this.props.location.pathname} />
                 <h3 className="center">Please Confirm the Information</h3>
                 <div className="divider"></div>
                 <div className="row">
                     <div className="col s6">
-                        <div className="first-name-review">First Name: {firstName}</div>
+                        <div className="first-name-review">
+                            <h6>First Name:</h6>
+                            <div className="card-panel">
+                                {firstName}
+                            </div>
+                        </div>
                     </div>
                     <div className="col s6">
-                        <div className="last-name-review">Last Name: {lastName}</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col s6">
-                        <div className="email-review">Email: {email}</div>
-                    </div>
-                    <div className="col s6">
-                        <div className="phone-review">Phone Number: {phone}</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col s6">
-                        <div className="school-review">School: {school}</div>
-                    </div>
-                    <div className="col s6">
-                        <div className="graduate-date-review">Graduation Date: {yearOfGraduation}</div>
+                        <div className="last-name-review">
+                            <h6>Last Name:</h6>
+                            <div className="card-panel">
+                                {lastName}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col s6">
-                        <div className="interest-function-review">Interested Function: {interestedFunction}</div>
+                        <div className="email-review">
+                            <h6>Email:</h6>
+                            <div className="card-panel">
+                                {email}
+                            </div>
+                        </div>
                     </div>
                     <div className="col s6">
-                        <div className="cv-file-review">CV File: {cv? cv.name: ""}</div>
+                        <div className="phone-review">
+                            <h6>Phone Number:</h6>
+                            <div className="card-panel">
+                                {phone}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col s6">
+                        <div className="school-review">
+                            <h6>School:</h6>
+                            <div className="card-panel">
+                                {school}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col s6">
+                        <div className="graduate-date-review">
+                            <h6>Graduation Date:</h6>
+                            <div className="card-panel">
+                                {yearOfGraduation}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col s6">
+                        <div className="interest-function-review">
+                            <h6>Interested Function:</h6>
+                            <div className="card-panel">
+                                {interestedFunction}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col s6">
+                        <div className="cv-file-review">
+                            <h6>CV File:</h6>
+                            <div className="card-panel">
+                                {cv ? cv.name : ""}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col s12">
-                        <div>Response 1: </div>
-                        <div className="essay-1-review">{essay1}</div>
+                        <div><h6>Response 1:</h6> </div>
+                        <div className="card-panel">
+                            <div className="essay-1-review"><span>{essay1}</span></div>
+                        </div>
                     </div>
                     <div className="col s12">
-                        <div>Response 2: </div>
-                        <div className="essay-2-review">{essay2}</div>
-    
+                        <div><h6>Response 2:</h6> </div>
+                        <div className="card-panel">
+                            <div className="essay-2-review">{essay2}</div>
+                        </div>
                     </div>
                 </div>
                 <div className="row buttons center">
