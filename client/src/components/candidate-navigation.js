@@ -9,7 +9,7 @@ export default (props)=>{
             <div className="nav-wrapper">
                 <div className="col s12 tag-wrapper">
                     <a href="#!" className={props.location === "/candidate-step1-info"?normal+highlight:normal}>Information</a>
-                    <a href="#!" className={props.location === "/candidate-step2-essays"?normal+highlight:normal}>Question</a>
+                    <a href="#!" className={props.location === "/candidate-step2-essays"?normal+highlight:normal}>Response</a>
                     <a href="#!" className={props.location === "/candidate-step3-review"?normal+highlight:normal}>Review</a>
                     <a href="#!" className={props.location === "/candidate-confirmation-page"?normal+highlight:normal}>Confirmation</a>
                 </div>
