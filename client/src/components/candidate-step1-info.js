@@ -10,7 +10,7 @@ class CandidateStep1Info extends Component {
 
     render() {
         const {enableSubmit} = this.props;
-        const submitButton = enableSubmit ? <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large">Next</Link> : <button className="waves-effect waves-light btn-large">Next</button>
+        const submitButton = enableSubmit ? <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large">Next</Link> : <button className="btn-large disabled">Next</button>
         const { inputChange, uploadChange } = this.props;
         const { firstName, lastName, phone, email, c_email, school, interestedFunctions, yearOfGraduation, cv } = this.props;
         return (
@@ -51,17 +51,20 @@ class CandidateStep1Info extends Component {
                     </div>
                     <div className="row">
                         <div className="input-field col s12 school-input">
+                        
                             <input placeholder="School of Pharmacy" onChange={inputChange} name="school" value={school} id="school" type="text" className=""/>
                             <label for="school" className="active">School of Pharmacy</label>
                             <div className="hidDiv school">Invalid Input. Field must contain at least one character</div>
                         </div>
                         <div className="input-field col s12">
+                        <br/>
                             <input placeholder="Expected year of graduation" onChange={inputChange} name="yearOfGraduation" value={yearOfGraduation} id="yearOfGraduation" type="month" className=""/>
                             <label for="yearOfGradutation" className="active year-label">Expected year of graduation</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
+                        <br/>
                             <select id="interestedFunction" onChange={inputChange} name="interestedFunction" value={interestedFunctions} className="browser-default valid">
                                 <option value="" disabled selected>Interested Functions</option>
                                 <option value="Clinical Development">Clinical Development</option>
@@ -80,6 +83,7 @@ completion of the 1st round of interview.
                     <div className="row">
                         <div className="file-field input-field">
                             <label for="btn" className="active">Upload CV/Resume</label>
+                            <br/>
                             <div className="btn" name="btn">
                                 <span>File</span>
                                 <input type="file" onChange={uploadChange}/>
