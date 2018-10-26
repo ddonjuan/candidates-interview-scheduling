@@ -7,6 +7,7 @@ import CandidateStep1Info from './candidate-step1-info';
 import CandidateStep2Essays from './candidate-step2-essays';
 import CandidateStep3Review from './candidate-step3-review';
 import CandidateConfirmationPage from './candidate-confirmation-page';
+import CandidateSubmitFailed from './candidate-submit-failed';
 import '../stylesheets/App.css';
 
 class App extends Component {
@@ -210,6 +211,7 @@ class App extends Component {
 					<Route path="/candidate-step2-essays" render={(props) => <CandidateStep2Essays {...props} essay1={essay1} essay2={essay2}  inputChange={this.handleInputChange} />} />
 					<Route path="/candidate-step3-review" render={(props) => <CandidateStep3Review {...props} firstName={firstName} lastName={lastName} phone={phone} email={email} school={school} yearOfGraduation={yearOfGraduation} interestedFunction={interestedFunction} cv={cv} essay1={essay1} essay2={essay2} inputChange={this.handleInputChange} />} />
 					<Route path="/candidate-confirmation-page" render={(props) => <CandidateConfirmationPage {...props} state={this.state} reset={this.resetState} />} />
+					<Route path="/candidate-submit-failed" render={()=><CandidateSubmitFailed/>}/> 
 				</div>
 				<Footer />
 			</div>

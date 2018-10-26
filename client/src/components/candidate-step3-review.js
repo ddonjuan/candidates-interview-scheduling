@@ -23,21 +23,30 @@ class CandidateConfirmationPage extends Component {
             'essay1': this.props.essay1,
             'essay2': this.props.essay2
         }];
-        console.log(userInfo);
         try {
             await axios.post('http://localhost:8888/submit-information.php', { ...userInfo }).then(response => {
                 console.log("Response", response);
-                this.props.history.push({
-                    pathname: '/candidate-confirmation-page'
-                });
+                if (response.data.success) {
+                    this.props.history.push({
+                        pathname: '/candidate-confirmation-page'
+                    });
+                } else {
+                    this.props.history.push({
+                        pathname: '/candidate-submit-failed'
+                    });
+                }
             });
         } catch (err) {
             console.log("error", err);
+            this.props.history.push({
+                pathname: '/candidate-submit-failed'
+            });
         }
     }
     handleSubmit() {
         var firstName = this.props.firstName;
         var LastName = this.props.lastName;
+        var ts = Math.round((new Date()).getTime() / 1000);
         var config = {
             apiKey: 'AIzaSyAiaonRqttDyUYuezZshYwftS_nG6YFjPs',
             authDomain: 'interview-app-5def8.firebaseapp.com',
@@ -48,16 +57,24 @@ class CandidateConfirmationPage extends Component {
         var storage = firebase.storage();
         var ref = storage.ref();
         var file = this.props.cv;
-        var refName = firstName + "." + LastName + "." + file.name
+        var refName = ts + "." + firstName + "." + LastName + "." + file.name;
         var uploadTask = ref.child(refName).put(file).then(function (snapshot) {
-            console.log('Uploaded a blob or file!', snapshot);
-            ref.child(refName).getDownloadURL().then(function (url) {
-                var address = url
-                this.insertStudent(address);
-                console.log(address);
-            }.bind(this)).catch(function (error) {
-                console.log(error);
-            });
+            console.log(snapshot);
+            if (snapshot.state === "success") {
+                ref.child(refName).getDownloadURL().then(function (url) {
+                    var address = url;
+                    this.insertStudent(address);
+                }.bind(this)).catch(function (error) {
+                    console.log(error);
+                    this.props.history.push({
+                        pathname: '/candidate-submit-failed'
+                    });
+                });
+            } else {
+                this.props.history.push({
+                    pathname: '/candidate-submit-failed'
+                });
+            }
         }.bind(this));
     }
 
