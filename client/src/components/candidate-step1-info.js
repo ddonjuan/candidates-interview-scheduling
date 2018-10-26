@@ -10,7 +10,7 @@ class CandidateStep1Info extends Component {
 
     render() {
         const {enableSubmit} = this.props;
-        const submitButton = enableSubmit ? <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large">Next -></Link> : <button className="waves-effect waves-light btn-large">Next -></button>
+        const submitButton = enableSubmit ? <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large">Next</Link> : <button className="waves-effect waves-light btn-large">Next</button>
         const { inputChange, uploadChange } = this.props;
         const { firstName, lastName, phone, email, c_email, school, interestedFunctions, yearOfGraduation, cv } = this.props;
         return (
@@ -86,10 +86,9 @@ completion of the 1st round of interview.
                         </div>
                     </div>
                 </form>
-                {submitButton}
                 <div className="row">
                     <div className="col s4 push-s5">
-                        <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large">Next</Link>
+                        {submitButton}
                     </div>
                 </div>
             </div>
