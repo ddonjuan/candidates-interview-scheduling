@@ -7,13 +7,12 @@ class CandidateStep1Info extends Component {
     constructor(props) {
         super(props)
     }
-    
+
     render() {
         const {enableSubmit} = this.props;
-        
         const submitButton = enableSubmit ? <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large">Next</Link> : <button className="btn-large disabled">Next</button>
         const { inputChange, uploadChange } = this.props;
-        const { firstName, lastName, phone, email, c_email, school, interestedFunctions, yearOfGraduation, cv } = this.props;
+        const { firstName, lastName, phone, email, c_email, school, interestedFunction, yearOfGraduation, cv } = this.props;
         return (
             <div className="container step-1-page">
                 <Nav location={this.props.location.pathname}/>
@@ -66,8 +65,8 @@ class CandidateStep1Info extends Component {
                     <div className="row">
                         <div className="input-field col s12">
                         <br/>
-                            <select id="interestedFunction" onChange={inputChange} name="interestedFunction" value={interestedFunctions} className="browser-default valid">
-                                <option value="" disabled selected>Interested Functions</option>
+                            <select id="interestedFunction" onChange={inputChange} name="interestedFunction" value={interestedFunction} className="browser-default valid">
+                                <option value="" disabled selected >Interested Functions</option>
                                 <option value="Clinical Development">Clinical Development</option>
                                 <option value="Medical Affairs">Medical Affairs (External Scientific Comm., Global Phase IV, Global Medical Comm.)</option>
                                 <option value="Global Regulatory Affairs">Global Regulatory Affairs – CMC</option>
