@@ -7,7 +7,8 @@ class CandidateStep1Info extends Component {
         super(props)
     }
     render() {
-        console.log("These are the props: ", this.props);
+        const {enableSubmit} = this.props;
+        const submitButton = enableSubmit ? <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large">Next</Link> : <button className="waves-effect waves-light btn-large">Next</button>
 
         const { inputChange, uploadChange } = this.props;
         const { firstName, lastName, phone, email, confirmEmail, school, interestedFunctions, yearOfGraduation, cv } = this.props;
@@ -74,7 +75,12 @@ class CandidateStep1Info extends Component {
                         </div>
                     </div>
                 </form>
-                <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large">Next -></Link>
+                <div className="row">
+                    <div className="col s4 push-s5">
+                        {submitButton}
+                    </div>
+                </div>
+
             </div>
         )
     }
