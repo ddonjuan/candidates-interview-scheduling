@@ -45,6 +45,10 @@
 .email-confirm{
   margin-top: 15%;
 }
+.essay-1-review, .essay-2-review{
+  width:100%;
+  word-wrap: break-word;
+}
 /*  Confirmation Pagestyling END  */
 .buttons{
   margin-top: 4%;

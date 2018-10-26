@@ -87,6 +87,11 @@ completion of the 1st round of interview.
                     </div>
                 </form>
                 {submitButton}
+                <div className="row">
+                    <div className="col s4 push-s5">
+                        <Link to="/candidate-step2-essays" className="waves-effect waves-light btn-large">Next</Link>
+                    </div>
+                </div>
             </div>
         )
     }
