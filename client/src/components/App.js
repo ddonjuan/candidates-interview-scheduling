@@ -64,13 +64,14 @@ class App extends Component {
 
 		switch (name) {
 			case 'essay1':
-				if (currentValue < maxChar1) {
+				if (currentValue <= maxChar1) {
 					remainingChar1 = maxChar1 - currentValue;
 					essay1Page.innerHTML = remainingChar1;
 				}
+				
 				break;
 			case 'essay2':
-				if (currentValue < maxChar2) {
+				if (currentValue <= maxChar2) {
 					remainingchar2 = maxChar2 - currentValue;
 					essay2Page.innerHTML = remainingchar2;
 				}
@@ -98,22 +99,43 @@ class App extends Component {
 		return;
 	  }
   }
-
+  emailConfirmCheck(name){
+	  const {c_email} = this.state;
+	  if(name !== c_email){
+		this.showInvalid('c_email');
+		document.getElementsByClassName("c_emailRight")[0].classList.remove("showCEmail");
+		this.setState({
+			cEmailCheck: false
+		});
+	  }
+	  
+  }
   emailValidation(name, value){
+	var emailFlag = false;
+
 	  if(name === 'email'){
 		var emailCheck = /[@]/;
 		var testEmail = emailCheck.test(value);
+		emailFlag = false;
 		if(testEmail){
 			this.showValid(name);
+			if(emailCheck){
+				this.emailConfirmCheck(name);
+			}
 			return;
 		  }
 		  this.showInvalid(name);
+		  this.setState({
+			  cEmailCheck: false
+		  })
 	  }
 	  if(name === 'c_email'){
 		const {email} = this.state;
+		console.log("THIS IS THE EMAIL: ", email);
 		if(value === email){
 			this.showValid(name);
 			document.getElementsByClassName(name+"Right")[0].classList.add("showCEmail");
+			emailCheck = true;
 			this.setState({
 				cEmailCheck: true
 			});
@@ -197,7 +219,6 @@ class App extends Component {
 			if(key !== 'textAreaChar' && key !== 'essay1' && key !== 'essay2' && key !== 'phoneCheck' && key !== 'cEmailCheck'){
 				if(stateMap[key] !== '' && stateMap[key] !== null){
 					counter++;
-					console.log("THIS IS THE COUNTER: ", counter);
 				}
 			}
 		});
@@ -209,7 +230,6 @@ class App extends Component {
 	}
 
 	render() {
-		console.log("THIS IS THE STATE IN RENDER: ", this.state);
 		const enableSubmit = this.enableSubmitButton();
 		const { firstName, lastName, phone, email, c_email, school, yearOfGraduation, interestedFunction, cv, essay1, essay2 } = this.state;
 		return (

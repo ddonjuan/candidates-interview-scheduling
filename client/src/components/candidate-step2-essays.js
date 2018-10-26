@@ -9,7 +9,7 @@ class CandidateStep2Essays extends Component {
     }
 
     render() {
-        console.log("These are the props: ", this.props);
+        
         const { inputChange, essay1, essay2 } = this.props;
         return (
             <div className="container">
