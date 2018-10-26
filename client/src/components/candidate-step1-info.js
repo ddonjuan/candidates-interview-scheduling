@@ -22,24 +22,29 @@ class CandidateStep1Info extends Component {
                     <div className="row">
                         <div className="input-field col s6">
                             <input placeholder="First Name" onChange={inputChange} name="firstName" value={firstName} id="firstName" type="text" className=""/>
+                            <label for="firstName" className="active">First Name</label>
                             <div className="hidDiv firstName">Field must contain at least one character</div>
                         </div>
                         <div className="input-field col s6">
                             <input placeholder="Last Name" onChange={inputChange} name="lastName" value={lastName} id="lastName" type="text" className=""/>
+                            <label for="lastName" className="active">Last Name</label>
                             <div className="hidDiv lastName">Invalid Input. Field must contain at least one character</div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
                             <input placeholder="Phone Number" onChange={inputChange} name="phone" value={phone} id="phone" type="text" className=""/>
+                            <label for="phone" className="active">Phone Number</label>
                             <div className="hidDiv phone">Invalid Input. Field must contain a total of 10 digits including area code with the exception of "()" and "-"</div>
                         </div>
                         <div className="input-field col s12">
                             <input placeholder="Email" onChange={inputChange} name="email" value={email} id="email" type="email" className=""/>
+                            <label for="email" className="active">Email</label>
                             <div className="hidDiv email">Invalid Input. Field must contain '@'</div>
                         </div>
                         <div className="input-field col s12">
                             <input placeholder="Confirm Email" onChange={inputChange } name="c_email" id="c_email" type="email" value={c_email} className=""/>
+                            <label for="c_email" className="active">Confirm Email</label>
                             <div className="hidDiv c_email">Email address does not match</div>
                             <div className="hidDiv c_emailRight">Email Matches</div>
                         </div>
@@ -47,6 +52,7 @@ class CandidateStep1Info extends Component {
                     <div className="row">
                         <div className="input-field col s12 school-input">
                             <input placeholder="School of Pharmacy" onChange={inputChange} name="school" value={school} id="school" type="text" className=""/>
+                            <label for="school" className="active">School of Pharmacy</label>
                             <div className="hidDiv school">Invalid Input. Field must contain at least one character</div>
                         </div>
                         <div className="input-field col s12">
@@ -63,17 +69,17 @@ class CandidateStep1Info extends Component {
                                 <option value="Global Regulatory Affairs">Global Regulatory Affairs – CMC</option>
                                 <option value="Clinical Pharmacology"> Clinical Pharmacology</option>
                             </select>
+                            <label for="interestedFunctions" className="active">Interested Functions</label>
                         </div>
                     </div>
                     <blockquote>
                             *Notes: Medical Affairs Candidates will select individual function upon
 completion of the 1st round of interview.
                         </blockquote>
-                    <br/>
+                        <br/>
                     <div className="row">
                         <div className="file-field input-field">
                             <label for="btn" className="active">Upload CV/Resume</label>
-                            <br/>
                             <div className="btn" name="btn">
                                 <span>File</span>
                                 <input type="file" onChange={uploadChange}/>
