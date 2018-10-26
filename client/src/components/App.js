@@ -28,7 +28,8 @@ class App extends Component {
 			essay1: '',
 			essay2: '',
 			textAreaChar: null,
-			phoneCheck: false
+			phoneCheck: false,
+			cEmailCheck: false
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleUploadChange = this.handleUploadChange.bind(this);
@@ -113,10 +114,16 @@ class App extends Component {
 		if(value === email){
 			this.showValid(name);
 			document.getElementsByClassName(name+"Right")[0].classList.add("showCEmail");
+			this.setState({
+				cEmailCheck: true
+			});
 			return
 		}
 		this.showInvalid(name);
 		document.getElementsByClassName(name+"Right")[0].classList.remove("showCEmail");
+		this.setState({
+			cEmailCheck: false
+		});
 	  }
 
 
@@ -183,23 +190,26 @@ class App extends Component {
 		})
 	}
 	enableSubmitButton(){
-		const {phoneCheck} = this.state;
+		const {phoneCheck, cEmailCheck} = this.state;
 		var stateMap = this.state;
 		var counter  = 0;
 		Object.keys(stateMap).forEach(key => {
-			if(key !== 'textAreaChar' && key !== 'essay1' && key !== 'essay2' && key !== 'phoneCheck'){
+			if(key !== 'textAreaChar' && key !== 'essay1' && key !== 'essay2' && key !== 'phoneCheck' && key !== 'cEmailCheck'){
 				if(stateMap[key] !== '' && stateMap[key] !== null){
 					counter++;
+					console.log("THIS IS THE COUNTER: ", counter);
 				}
 			}
 		});
-		if(counter === 9 && phoneCheck){
+		
+		if(counter === 9 && phoneCheck && cEmailCheck){
 			return true;
 		}
 		return false;
 	}
 
 	render() {
+		console.log("THIS IS THE STATE IN RENDER: ", this.state);
 		const enableSubmit = this.enableSubmitButton();
 		const { firstName, lastName, phone, email, c_email, school, yearOfGraduation, interestedFunction, cv, essay1, essay2 } = this.state;
 		return (
@@ -207,7 +217,7 @@ class App extends Component {
 				<Header />
 				<div className="content">
 					<Route exact path="/" component={CandidateLandingPage} />
-					<Route path="/candidate-step1-info" render={(props) => <CandidateStep1Info {...props} firstName={firstName} lastName={lastName} phone={phone} email={email} school={school} yearOfGraduation={yearOfGraduation} interestedFunction={interestedFunction} cv={cv} essay1={essay1} essay2={essay2} enableSubmit={enableSubmit} inputChange={this.handleInputChange} uploadChange={this.handleUploadChange} />} />
+					<Route path="/candidate-step1-info" render={(props) => <CandidateStep1Info {...props} firstName={firstName} lastName={lastName} phone={phone} email={email} school={school} yearOfGraduation={yearOfGraduation} interestedFunction={interestedFunction} cv={cv} essay1={essay1} essay2={essay2} c_email={c_email} enableSubmit={enableSubmit} inputChange={this.handleInputChange} uploadChange={this.handleUploadChange} />} />
 					<Route path="/candidate-step2-essays" render={(props) => <CandidateStep2Essays {...props} essay1={essay1} essay2={essay2}  inputChange={this.handleInputChange} />} />
 					<Route path="/candidate-step3-review" render={(props) => <CandidateStep3Review {...props} firstName={firstName} lastName={lastName} phone={phone} email={email} school={school} yearOfGraduation={yearOfGraduation} interestedFunction={interestedFunction} cv={cv} essay1={essay1} essay2={essay2} inputChange={this.handleInputChange} />} />
 					<Route path="/candidate-confirmation-page" render={(props) => <CandidateConfirmationPage {...props} state={this.state} reset={this.resetState} />} />

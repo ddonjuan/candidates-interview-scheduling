@@ -39,7 +39,7 @@ class CandidateStep1Info extends Component {
                             <div className="hidDiv email">Invalid Input. Field must contain '@'</div>
                         </div>
                         <div className="input-field col s12">
-                            <input placeholder="Confirm Email" onChange={inputChange } name="c_email" id="c_email" type="email" className=""/>
+                            <input placeholder="Confirm Email" onChange={inputChange } name="c_email" id="c_email" type="email" value={c_email} className=""/>
                             <div className="hidDiv c_email">Email address does not match</div>
                             <div className="hidDiv c_emailRight">Email Matches</div>
                         </div>
