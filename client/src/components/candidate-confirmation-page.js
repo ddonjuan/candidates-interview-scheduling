@@ -14,7 +14,7 @@ class CandidateConfirmation extends Component {
                 <div className="email-confirm">
                     <h3 className="center">Your application has been submitted.</h3>
                     <h4 className="center">Confirmation has been emailed to:</h4>
-                    <h4 className="center">{this.props.state.email}</h4>
+                    <h4 className="center">{this.props.location.state.email}</h4>
                 </div>
                 <div className="email-question row">
                     <div className="col s10 push-s1">

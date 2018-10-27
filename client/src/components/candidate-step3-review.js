@@ -26,17 +26,15 @@ class CandidateConfirmationPage extends Component {
         var emailInfo =[{'email': this.props.email}];
         try {
             await axios.post('http://localhost:8888/submit-information.php', { ...userInfo }).then(async response => {
-                console.log("Response", response);
                 if (response.data.success) {
                     await axios.post('http://localhost:8888/mail.php',{...emailInfo}).then(response => {
-                        console.log("Mail Response", response);
                         if (response.data.success){
                             this.props.resetState();
                             this.props.history.push({
-                                pathname: '/candidate-confirmation-page'
+                                pathname: '/candidate-confirmation-page',
+                                state: { email: emailInfo[0].email }
                             });
                         }else {
-                            console.log(response.data.success);
                             this.props.resetState();
                             this.props.history.push({
                                 pathname: '/candidate-submit-failed'
@@ -51,7 +49,6 @@ class CandidateConfirmationPage extends Component {
                 }
             });
         } catch (err) {
-            console.log("error", err);
             this.props.resetState();
             this.props.history.push({
                 pathname: '/candidate-submit-failed'
@@ -59,11 +56,9 @@ class CandidateConfirmationPage extends Component {
         }
     }
     handleSubmit() {
-        console.log(this.props.cv);
         var firstName = this.props.firstName;
         var LastName = this.props.lastName;
         var ts = Math.floor((new Date()).getTime());
-        console.log(ts);
         var config = {
             apiKey: 'AIzaSyAiaonRqttDyUYuezZshYwftS_nG6YFjPs',
             authDomain: 'interview-app-5def8.firebaseapp.com',
@@ -76,13 +71,11 @@ class CandidateConfirmationPage extends Component {
         var file = this.props.cv;
         var refName = ts + "." + firstName + "." + LastName + "." + file.name;
         var uploadTask = ref.child(refName).put(file).then(function (snapshot) {
-            console.log(snapshot);
             if (snapshot.state === "success") {
                 ref.child(refName).getDownloadURL().then(function (url) {
                     var address = url;
                     this.insertStudent(address);
                 }.bind(this)).catch(function (error) {
-                    console.log(error);
                     this.props.resetState();
                     this.props.history.push({
                         pathname: '/candidate-submit-failed'
