@@ -23,14 +23,28 @@ class CandidateConfirmationPage extends Component {
             'essay1': this.props.essay1,
             'essay2': this.props.essay2
         }];
+        var emailInfo =[{'email': this.props.email}];
         try {
-            await axios.post('http://localhost:8888/submit-information.php', { ...userInfo }).then(response => {
+            await axios.post('http://localhost:8888/submit-information.php', { ...userInfo }).then(async response => {
                 console.log("Response", response);
                 if (response.data.success) {
-                    this.props.history.push({
-                        pathname: '/candidate-confirmation-page'
+                    await axios.post('http://localhost:8888/mail.php',{...emailInfo}).then(response => {
+                        console.log("Mail Response", response);
+                        if (response.data.success){
+                            this.props.resetState();
+                            this.props.history.push({
+                                pathname: '/candidate-confirmation-page'
+                            });
+                        }else {
+                            console.log(response.data.success);
+                            this.props.resetState();
+                            this.props.history.push({
+                                pathname: '/candidate-submit-failed'
+                            });
+                        }
                     });
                 } else {
+                    this.props.resetState();
                     this.props.history.push({
                         pathname: '/candidate-submit-failed'
                     });
@@ -38,15 +52,18 @@ class CandidateConfirmationPage extends Component {
             });
         } catch (err) {
             console.log("error", err);
+            this.props.resetState();
             this.props.history.push({
                 pathname: '/candidate-submit-failed'
             });
         }
     }
     handleSubmit() {
+        console.log(this.props.cv);
         var firstName = this.props.firstName;
         var LastName = this.props.lastName;
-        var ts = Math.round((new Date()).getTime() / 1000);
+        var ts = Math.floor((new Date()).getTime());
+        console.log(ts);
         var config = {
             apiKey: 'AIzaSyAiaonRqttDyUYuezZshYwftS_nG6YFjPs',
             authDomain: 'interview-app-5def8.firebaseapp.com',
@@ -66,11 +83,13 @@ class CandidateConfirmationPage extends Component {
                     this.insertStudent(address);
                 }.bind(this)).catch(function (error) {
                     console.log(error);
+                    this.props.resetState();
                     this.props.history.push({
                         pathname: '/candidate-submit-failed'
                     });
                 });
             } else {
+                this.props.resetState();
                 this.props.history.push({
                     pathname: '/candidate-submit-failed'
                 });

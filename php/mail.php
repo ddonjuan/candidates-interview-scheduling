@@ -1,8 +1,13 @@
 <?php
 require_once('email-config.php');
 require('phpmailer/PHPMailer/PHPMailerAutoload.php');
+require('./cross-origin.php');
+$postdata = file_get_contents("php://input");
+$request = json_decode($postdata,true);
+$email = $request[0]['email'];
+
 $mail = new PHPMailer;
-$mail->SMTPDebug = 3;           // Enable verbose debug output. Change to 0 to disable debugging output.
+$mail->SMTPDebug = 0;           // Enable verbose debug output. Change to 0 to disable debugging output.
 
 $mail->isSMTP();                // Set mailer to use SMTP.
 $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers.
@@ -23,28 +28,21 @@ $options = array(
 $mail->smtpConnect($options);
 $mail->From = 'lipenben@usc.edu';  // sender's email address (shows in "From" field)
 $mail->FromName = 'Allergan USC Fellowship';   // sender's name (shows in "From" field)
-$mail->addAddress('harrison8024@gmail.com');  // Add a recipient - MY ACTUAL EMAIL
-//$mail->addAddress('ellen@example.com');                        // Name is optional
-// $mail->addReplyTo($_POST['email']);                          // Add a reply-to address - PERSON OF INTEREST'S EMAIL
+$mail->addAddress($email);  // Add a recipient - MY ACTUAL EMAIL
 $mail->addReplyTo('lipenben@usc.edu');  
-//$mail->addCC('cc@example.com');
-//$mail->addBCC('bcc@example.com');
 
-//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 
 $mail->Subject = 'Allergan USC Fellowship application confirmation';
 $currentDate = date('Y-m-d H:i:s');
 
-$mail->msgHTML(file_get_contents('test.html'), dirname(__FILE__));
-// $mail->Body    = "<div>TESTING....</div>";
+$mail->msgHTML(file_get_contents('confirm.html'), dirname(__FILE__));
 $mail->AltBody = "
-    Name: 
-    Email: 
-    Subject:
-    Message: 
-    Meta data:
+    Your application has been successfully submitted. 
+    Dear Candidate: 
+    Thank you for your application to the USC-Allergan Industry Pharmaceutical Fellowship pre-screening process. Selected candidates will be invited to schedule an interview at the 2018 ASHP Midyear PPS by email prior to December 1, 2018. Please be sure to bring a copy of your updated curriculum vitae. We look forward for your application.
+    USC-Allergan Industry Pharmaceutical Fellowship
+    2018 Candidate Selection Committee
 ";
 $output = [
     'success'=>false,

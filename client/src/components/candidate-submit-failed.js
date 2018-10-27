@@ -10,7 +10,7 @@ export default () => {
                 <div className=" btn-again row">
                     <div className="col s5"></div>
                     <div className="col s3">
-                        <Link to="/candidate-step3-review" className="waves-effect waves-light btn-large back-button">Try Again</Link>
+                        <Link to="/candidate-step1-info" className="waves-effect waves-light btn-large back-button">Try Again</Link>
                     </div>
                 </div>
             </div>
