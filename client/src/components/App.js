@@ -131,7 +131,6 @@ class App extends Component {
 	  }
 	  if(name === 'c_email'){
 		const {email} = this.state;
-		console.log("THIS IS THE EMAIL: ", email);
 		if(value === email){
 			this.showValid(name);
 			document.getElementsByClassName(name+"Right")[0].classList.add("showCEmail");
@@ -201,6 +200,7 @@ class App extends Component {
 			lastName: '',
 			phone: '',
 			email: '',
+			c_email: '',
 			school: '',
 			yearOfGraduation: '',
 			interestedFunction: '',
@@ -209,6 +209,8 @@ class App extends Component {
 			essay1: '',
 			essay2: '',
 			textAreaChar: null,
+			phoneCheck: false,
+			cEmailCheck: false
 		})
 	}
 	enableSubmitButton(){
@@ -239,7 +241,7 @@ class App extends Component {
 					<Route exact path="/" component={CandidateLandingPage} />
 					<Route path="/candidate-step1-info" render={(props) => <CandidateStep1Info {...props} firstName={firstName} lastName={lastName} phone={phone} email={email} school={school} yearOfGraduation={yearOfGraduation} interestedFunction={interestedFunction} cv={cv} essay1={essay1} essay2={essay2} c_email={c_email} enableSubmit={enableSubmit} inputChange={this.handleInputChange} uploadChange={this.handleUploadChange} />} />
 					<Route path="/candidate-step2-essays" render={(props) => <CandidateStep2Essays {...props} essay1={essay1} essay2={essay2}  inputChange={this.handleInputChange} />} />
-					<Route path="/candidate-step3-review" render={(props) => <CandidateStep3Review {...props} firstName={firstName} lastName={lastName} phone={phone} email={email} school={school} yearOfGraduation={yearOfGraduation} interestedFunction={interestedFunction} cv={cv} essay1={essay1} essay2={essay2} inputChange={this.handleInputChange} />} />
+					<Route path="/candidate-step3-review" render={(props) => <CandidateStep3Review {...props} firstName={firstName} lastName={lastName} phone={phone} email={email} school={school} yearOfGraduation={yearOfGraduation} interestedFunction={interestedFunction} cv={cv} essay1={essay1} essay2={essay2} inputChange={this.handleInputChange} resetState={this.resetState}/>} />
 					<Route path="/candidate-confirmation-page" render={(props) => <CandidateConfirmationPage {...props} state={this.state} reset={this.resetState} />} />
 					<Route path="/candidate-submit-failed" render={()=><CandidateSubmitFailed/>}/> 
 				</div>

@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default (props)=>{
-    console.log(props.location);
     var normal = "nav-text nav-first-dot nav-button nav-line "
     var highlight = "nav-text-highlight nav-button-highlight nav-line-highlight"
     return (
