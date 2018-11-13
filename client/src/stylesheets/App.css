@@ -1,4 +1,190 @@
-.App {
+/* APP */
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 100%;
+  height: 15%;
+}
+
+.header h1 {
+  margin: 0;
+  color: white;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  margin-top: 50px;
+  flex-shrink: 0;
+}
+
+.logo {
+  max-height: 70%;
+  width: auto;
+}
+
+#logo-wrapper {
+  margin-bottom: 0%;
+}
+
+/* APP */
+
+
+
+/*  Step 3 styling START  */
+.divider {
+  margin-bottom: 3%;
+}
+
+.essay-1-input,
+.essay-2-input {
+  border: 1px solid black;
+  height: 180px;
+}
+
+/*  Step 3 styling FINISH  */
+
+
+
+/*  Confirmation Page styling START  */
+.email-confirm {
+  margin-top: 15%;
+}
+
+.essay-1-review,
+.essay-2-review {
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.email-question {
+  margin-top: 15%;
+}
+
+/*  Confirmation Pagestyling END  */
+
+
+
+.buttons {
+  margin-top: 4%;
+}
+
+.back-button {
+  margin-right: 5%;
+}
+
+.btn-again {
+  margin-top: 100px;
+}
+/* NAV */
+.tag-wrapper {
   text-align: center;
 }
 
+nav.dot {
+  background: none;
+  box-shadow: none;
+}
+
+.nav-text {
+  font-size: 18px;
+  position: relative;
+  color: #6f6f6f;
+  display: inline-block;
+  padding: 0 2.5rem;
+}
+
+.nav-button:before,
+.nav-button:first-child:before {
+  content: "";
+  position: absolute;
+  background: #fcc3c5;
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 0 0 0 -5px;
+  border-radius: 50%;
+  bottom: 0;
+  left: 50%;
+  z-index: 1;
+  transition: width ease-in 0.1s, height ease-in 0.1s, margin ease-in 0.1s, bottom ease-in 0.1s;
+}
+
+.nav-line:after {
+  content: "";
+  position: absolute;
+  background: #fcc3c5;
+  display: block;
+  width: calc(100% + 20px);
+  height: 2px;
+  bottom: 4px;
+  left: 50%;
+}
+
+/* .nav-line-highlight:after {
+  content: "";
+  position: absolute;
+  background: #f7585e;
+  display: block;
+  width: calc(100% - 5px);
+  height: 2px;
+  bottom: 4px;
+  left: 50%;
+} */
+/* nav.dot a:nth-last-child(2):after {
+  width: calc(100% + 25px);
+  background: #fcc3c5;
+} */
+.nav-text-highlight {
+  color: black;
+}
+
+.nav-button-highlight:before,
+.nav-button-highlight:first-child:before {
+  background: #f7585e;
+}
+
+nav.dot a:last-child:after {
+  display: none;
+}
+
+/* NAV */
+
+.hidDiv{
+  position:absolute;
+  display: none;
+}
+.showDiv{
+  color:#f44336;
+  position: absolute;
+  display: block;
+}
+.showCEmail{
+  color: rgba(87,175,63,1);
+  position: absolute;
+  display: block;
+}
+.school-input{
+  margin-bottom: 6% !important;
+}
+.footer-logo div{
+  margin-top: 2%;
+  display:flex;
+  justify-content: space-evenly;
+}
+.hidDivBlock{
+  position:relative;
+  display: none;
+}
+.displayFileBlock{
+  color: rgba(87,175,63,1);
+  position: relative;
+  display: block;
+}
