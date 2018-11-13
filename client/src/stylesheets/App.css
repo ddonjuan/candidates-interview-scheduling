@@ -128,20 +128,6 @@ nav.dot {
   left: 50%;
 }
 
-/* .nav-line-highlight:after {
-  content: "";
-  position: absolute;
-  background: #f7585e;
-  display: block;
-  width: calc(100% - 5px);
-  height: 2px;
-  bottom: 4px;
-  left: 50%;
-} */
-/* nav.dot a:nth-last-child(2):after {
-  width: calc(100% + 25px);
-  background: #fcc3c5;
-} */
 .nav-text-highlight {
   color: black;
 }
@@ -187,4 +173,11 @@ nav.dot a:last-child:after {
   color: rgba(87,175,63,1);
   position: relative;
   display: block;
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-text {
+    font-size: 12px;
+    padding: 0 2vw;
+  }
 }

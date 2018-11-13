@@ -30,10 +30,8 @@ $output['success'] = false;
 
 if($stmt->execute()){
     $output['success'] = true;
-    $output['request'] = $request;
 }else{
     $output['error'] = $stmt->error;
-    $output['request'] = $request;
 }
 
 $stmt->close();
