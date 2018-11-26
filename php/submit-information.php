@@ -22,7 +22,7 @@ $cv = $request[0]['cv'];
 $essay1 = $request[0]['essay1'];
 $essay2 = $request[0]['essay2'];
 $interest = $request[0]['interest'];
-$status = "pending";
+$status = 0;
 $token = 0;
 
 $output['success'] = false;
